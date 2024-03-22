@@ -4,20 +4,20 @@ from selenium.webdriver.support.wait import WebDriverWait
 from time import sleep
 
 
-
-
 class Page:
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, 10)
         self.username = (By.ID, 'email-2')
         self.password = (By.ID, 'field')
         self.button = (By.CSS_SELECTOR, 'a[class = "login-button w-button"]')
-        self.FORSALE = (By.XPATH, "//div[@text='For sale']")
         self.OPTION = (By.XPATH, "//div[@class='verified-section']")
         self.VERIFYPAGE = (By.XPATH, "//div[@class='verified-section']")
-        self.FORSALE = (By.XPATH, "//div[@text='For sale']")
-        self.CARD = (By.XPATH, "//div[@class='listing-card']")
-
+        # self.FORSALE = (By.XPATH, "//div[@text='For sale']")
+        # self.CARD = (By.XPATH, "//div[@class='listing-card']")
+        self.FILTER_TAG = (By.XPATH, "//div[@class='filter-text']")
+        self.FILTER_TAG2 = (By.XPATH, "//div[@class='tag-text-filters']")
+        self.FILTER_TAG3 = (By.XPATH, "//a[@class='button-filter w-button']")
 
 
     def open(self, url):
@@ -35,13 +35,19 @@ class Page:
     def input_text(self, text, *locator):
         self.driver.find_element(*locator).send_keys(text)
 
-    def wait_element_clickable(self, *locator):
+    def wait_element_clickable(self, locator):
         self.wait.until(
             EC.element_to_be_clickable(locator),
             message=f'Element by {locator} is clickable'
         )
 
-    def wait_element_clickable_click(self, *locator):
+    def wait_element_to_appear(self, locator):
+        self.wait.until(
+            EC.visibility_of_element_located(locator),
+            message=f'Element by {locator} is visible'
+        )
+
+    def wait_element_clickable_click(self, locator):
         self.wait.until(
             EC.element_to_be_clickable(locator),
             message=f'Element by {locator} is clickable').click()
@@ -63,4 +69,5 @@ class Page:
     def click_login_button(self, button):
         self.driver.find_element(self.button).click()
 
-
+    def window(self, window):
+        self.driver.execute_script("window.scrollBy(0,2000)", "")
