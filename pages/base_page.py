@@ -60,7 +60,7 @@ class Page:
     def enter_password(self, password):
         self.driver.find_element_by_id('password').send_keys('$eQuira1')
 
-    def click_login_button(self):
+    def click_login_button(self, button):
         self.driver.find_element(self.button).click()
 
 

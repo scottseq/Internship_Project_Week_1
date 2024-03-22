@@ -21,10 +21,9 @@ def login(context):
     #context.driver.find_element(By.ID, 'email-2').send_keys(username)
     #context.driver.find_element(By.ID, 'field').send_keys(password)
     #context.driver.find_element(By.CSS_SELECTOR, 'a[class = "login-button w-button"]').click()
-    context.app.login_page.login()
     #print('Logged in Successfully')
     #sleep(3)
-
+    context.app.login_page.login()
 
 @when('Click on "secondary" option at the left side of the page')
 def click_secondary(context):

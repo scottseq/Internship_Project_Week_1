@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.support.wait import WebDriverWait
 from features.steps.seconday_deals import FORSALE, CARD
 from pages.base_page import Page
 from time import sleep
@@ -11,7 +11,8 @@ class salespage(Page):
 
     def verify_all_cards(self):
         self.driver.execute_script("window.scrollBy(0,2000)", "")
-        sleep(2)
+        #wait.until
+        #sleep(2)
 
         all_tags = self.driver.find_elements(*CARD)
 
