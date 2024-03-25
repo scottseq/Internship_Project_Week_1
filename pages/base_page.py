@@ -11,14 +11,14 @@ class Page:
         self.username = (By.ID, 'email-2')
         self.password = (By.ID, 'field')
         self.button = (By.CSS_SELECTOR, 'a[class = "login-button w-button"]')
-        self.OPTION = (By.XPATH, "//div[@class='verified-section']")
+        #self.OPTION = (By.XPATH, "//div[@class='verified-section']")
         self.VERIFYPAGE = (By.XPATH, "//div[@class='verified-section']")
         # self.FORSALE = (By.XPATH, "//div[@text='For sale']")
         # self.CARD = (By.XPATH, "//div[@class='listing-card']")
         self.FILTER_TAG = (By.XPATH, "//div[@class='filter-text']")
         self.FILTER_TAG2 = (By.XPATH, "//div[@class='tag-text-filters']")
         self.FILTER_TAG3 = (By.XPATH, "//a[@class='button-filter w-button']")
-
+        #self.SECONDARY = (By.CSS_SELECTOR, "[href='/secondary-listings'][aria-current='page'].menu-button-block")
 
     def open(self, url):
         self.driver.get(url)
@@ -31,6 +31,10 @@ class Page:
 
     def click(self, *locator):
         self.driver.find_element(*locator).click()
+
+    def display(self, *locator):
+        self.driver.find_element(*locator).is_displayed()
+
 
     def input_text(self, text, *locator):
         self.driver.find_element(*locator).send_keys(text)
@@ -52,6 +56,9 @@ class Page:
             EC.element_to_be_clickable(locator),
             message=f'Element by {locator} is clickable').click()
 
+
+
+
     def verify_partial_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text
         assert expected_text in actual_text, f"Expected '{expected_text}' not in '{actual_text}'"
@@ -71,3 +78,4 @@ class Page:
 
     def window(self, window):
         self.driver.execute_script("window.scrollBy(0,2000)", "")
+

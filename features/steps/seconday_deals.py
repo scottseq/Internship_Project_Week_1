@@ -25,7 +25,7 @@ def login(context):
     #sleep(3)
     context.app.login_page.login()
 
-@when('Click on "secondary" option at the left side of the page')
+@when('Click on secondary option at the left side of the page')
 def click_secondary(context):
     #context.driver.find_element(By.XPATH, "//a[@href='/secondary-listings']").click()
     context.app.option_page.option_page()

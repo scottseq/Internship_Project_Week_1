@@ -5,10 +5,11 @@ from pages.base_page import Page
 
 class verifypage(Page):
     VERIFIED_SECTION = (By.XPATH, "//div[@class='verified-section']")
+    VERIFIED_SECTION2 = (By.CSS_SELECTOR, '.verified-section')
 
     def verify_right_page(self):
-        self.wait_element_to_appear(self.VERIFIED_SECTION)
-        self.find_element(*self.VERIFIED_SECTION).is_displayed()
+        self.wait_element_to_appear(self.VERIFIED_SECTION2)
+        #self.display(self.VERIFIED_SECTION2)
 
 
 
