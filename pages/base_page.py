@@ -67,8 +67,8 @@ class Page:
         actual_url = self.driver.current_url
         assert expected_url == actual_url, f"Expected '{expected_url}' but got '{actual_url}'"
 
-    def enter_username(self, username):
-        self.driver.find_element_by_id('username').send_keys('sequirascott@gmail.com')
+    # def enter_username(self, username):
+    #     self.driver.find_element_by_id('username').send_keys('sequirascott@gmail.com')
 
     def enter_password(self, password):
         self.driver.find_element_by_id('password').send_keys('$eQuira1')

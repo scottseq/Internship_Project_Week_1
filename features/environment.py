@@ -12,9 +12,9 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service)
 
     # driver_path = GeckoDriverManager().install()
     # service = Service(driver_path)
@@ -30,7 +30,29 @@ def browser_init(context):
     # )
 
 
-###OTHER BROWERS ###
+
+    ### BROWSERSTACK ###
+    # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
+    bs_user = ' '
+    bs_key = ' '
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+
+    options = webdriver.ChromeOptions()
+    bstack_options = {
+        'os': 'OS X',
+        'osVersion': 'Ventura',
+        'browserName': 'Chrome',
+        'sessionName': 'secondary deals'
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
+
+
+    ### SAFARI ###
+    # context.driver = webdriver.Safari()
+
+
+### OTHER_BROWSERS ###
 
     # service = Service(executable_path='C:\Users\sequi\Internship_Project_Week_1\geckodriver.exe')
     # context.driver = webdriver.Firefox(service=service)
