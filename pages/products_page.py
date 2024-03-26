@@ -10,9 +10,9 @@ class productspage(Page):
     # FILTER_TAG3 = (By.XPATH, "//a[@class='button-filter w-button']")
 
     def verify_products_page(self):
-        self.wait_element_clickable_click(self.FILTER_TAG)
-        self.wait_element_clickable_click(self.FILTER_TAG2)
-        self.wait_element_clickable_click(self.FILTER_TAG3)
+        self.wait_element_clickable_click(*self.FILTER_TAG)
+        self.wait_element_clickable_click(*self.FILTER_TAG2)
+        self.wait_element_clickable_click(*self.FILTER_TAG3)
 
         # self.find_element(By.XPATH, "//div[@class='tag-text-filters']").click()
         # self.find_element(By.XPATH, "//a[@class='button-filter w-button']").click()

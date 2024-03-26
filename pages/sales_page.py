@@ -15,7 +15,7 @@ class salespage(Page):
         print('total tags:', len(all_tags))
 
         for tags in all_tags:
-            self.wait_element_to_appear(self.FORSALE)
+            self.wait_element_to_appear(*self.FORSALE)
             title = tags.find_element(*self.FORSALE).text
             print('Tag: ' + title)
             assert title, 'Not for Sale'

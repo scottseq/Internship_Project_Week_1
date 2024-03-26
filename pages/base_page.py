@@ -45,13 +45,13 @@ class Page:
             message=f'Element by {locator} is clickable'
         )
 
-    def wait_element_to_appear(self, locator):
+    def wait_element_to_appear(self, *locator):
         self.wait.until(
             EC.visibility_of_element_located(locator),
             message=f'Element by {locator} is visible'
         )
 
-    def wait_element_clickable_click(self, locator):
+    def wait_element_clickable_click(self, *locator):
         self.wait.until(
             EC.element_to_be_clickable(locator),
             message=f'Element by {locator} is clickable').click()

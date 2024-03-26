@@ -12,13 +12,13 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
-
-    driver_path = GeckoDriverManager().install()
+    driver_path = ChromeDriverManager().install()
     service = Service(driver_path)
-    context.driver = webdriver.Firefox(service=service)
+    context.driver = webdriver.Chrome(service=service)
+
+    # driver_path = GeckoDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Firefox(service=service)
 
     ### HEADLESS MODE ####
     # options = webdriver.ChromeOptions()
@@ -35,8 +35,8 @@ def browser_init(context):
     # service = Service(executable_path='C:\Users\sequi\Internship_Project_Week_1\geckodriver.exe')
     # context.driver = webdriver.Firefox(service=service)
 
-    context.driver.set_window_size(1024, 768)
-    # context.driver.maximize_window()
+    context.driver.set_window_size(1920, 1080)
+    #context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.app = Application(context.driver)
 

@@ -8,7 +8,7 @@ class verifypage(Page):
     VERIFIED_SECTION2 = (By.CSS_SELECTOR, '.verified-section')
 
     def verify_right_page(self):
-        self.wait_element_to_appear(self.VERIFIED_SECTION2)
+        self.wait_element_to_appear(*self.VERIFIED_SECTION2)
         #self.display(self.VERIFIED_SECTION2)
 
 
